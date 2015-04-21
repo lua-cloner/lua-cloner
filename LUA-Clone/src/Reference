@@ -1,0 +1,18 @@
+Image:
+	.raw 	Byte to byte copy of full disk ZIPPED
+
+MultiImage:  --> .lcl (lua-cloner)
+	Zip file:
+		originalname.raw		Original.raw
+		main.index				Main Index
+		Increment#.raw			Full Image of disk incremented
+		
+	main.index:
+		originalname.raw = drivename
+		increment#.raw = drivename
+		
+Compact:
+	Extract originalname.raw
+	modify with Increment#.raw
+	create new Multiimage
+	

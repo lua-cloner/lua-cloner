@@ -1,7 +1,20 @@
 require'lfs'
 local class = require 'middleclass'
 
-screen = {function clear() end, function setPos(x, y) end, function getPos() end, function read() end}
+screen = {
+  ["clear"] = function() 
+  
+  end, 
+  ["setPos"] = function(x, y)
+  
+  end, 
+  ["getPos"] = function() 
+  
+  end, 
+  ["read"] = function() 
+  
+  end
+}
 
 local function main()
   init()
@@ -9,13 +22,15 @@ local function main()
   result, i = Menu:showMain()
   
   if i==1 then
-    Menu:showCreateImage(disks)  --todo
-  else if i==2 then
-    Menu:showCreateMultiImage()  --todo create
-  else if i==3 then
-    Menu:showIncrementImage()  --todo create
-  else if i==4 then
-    Menu:showRestoreImage()  --todo create
+    Menu:showCreateImage()
+  elseif i==2 then
+    Menu:showCreateMultiImage()  --todo
+  elseif i==3 then
+    Menu:showIncrementImage()  --todo
+  elseif i==4 then
+    Menu:showRestoreImage()  --todo
+  elseif i==5 then
+    Menu:showCompactImage() --todo
   end
   
 end
@@ -49,9 +64,10 @@ function Menu:showMain()
   print("2- Create MultiImage")
   print("3- Increment Image")
   print("4- Restore Image")
+  print("5- Compact MultiImage")
   while true do
     i = tonumber(io.read())
-    if i>0 an i<5 then
+    if i>0 and i<6 then
       return true, i
     end
   end
@@ -76,11 +92,31 @@ function Menu:showCreateImage(disks)
   end
   while true do
     i = tonumber(io.read())
-    if i>0 and i=<#disks then
+    if i>0 and i<=#disks then
       useDisk = disks[i]
       break
     end
   end
-  return true
+  createImage(useDisk)
 end
 
+function Menu:showCreateMultiImage() 
+  --show files detected as .raw
+  
+end
+
+function Menu:showIncrementImage()
+  --show multi images detected and offer to add increment
+end
+
+function Menu:showRestoreImage()
+  --show multi images detected and select disk to restore to
+end
+
+function Menu:showCompactImage()
+
+end
+
+function createImage (useDisk)
+
+end
