@@ -1,4 +1,5 @@
 require'lfs'
+local class = require 'middleclass'
 
 disks={}
 useDisk = ""
@@ -22,3 +23,5 @@ local function main()
 end
 
 main()
+
+function init() 
