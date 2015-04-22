@@ -118,5 +118,14 @@ function Menu:showCompactImage()
 end
 
 function createImage (useDisk)
-  terminal = io.popen("zip ".."image.raw".." "..useDisk, "w")
+  print(io.popen("zip ".."image.raw".." "..useDisk, "w"))
+end
+
+function createMultiImage(...)
+  local images = {...}
+  local str = ""
+  for i=1, images do
+    str = images[i].." "
+  end
+  print(io.popen("zip ".."image.lcl".." "..str,mode))
 end
