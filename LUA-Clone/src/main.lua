@@ -118,5 +118,5 @@ function Menu:showCompactImage()
 end
 
 function createImage (useDisk)
-
+  terminal = io.popen("zip ".."image.raw".." "..useDisk, "w")
 end
