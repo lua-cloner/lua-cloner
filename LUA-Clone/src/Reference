@@ -4,11 +4,5 @@ Image:
 MultiImage:  --> .lcl (lua-cloner)
 	Zip file:
 		originalname.raw					Original.raw
-		originalname.Increment#.raw			Full Image of disk incremented
-		
-		
-Compact:
-	Extract originalname.raw
-	modify with Increment#.raw
-	create new Multiimage
+
 	

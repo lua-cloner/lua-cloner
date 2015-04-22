@@ -26,11 +26,7 @@ local function main()
   elseif i==2 then
     Menu:showCreateMultiImage()  --todo
   elseif i==3 then
-    Menu:showIncrementImage()  --todo
-  elseif i==4 then
     Menu:showRestoreImage()  --todo
-  elseif i==5 then
-    Menu:showCompactImage() --todo
   end
   
 end
@@ -62,12 +58,10 @@ function Menu:showMain()
   
   print("1- Create Image")
   print("2- Create MultiImage")
-  print("3- Increment Image")
-  print("4- Restore Image")
-  print("5- Compact MultiImage")
+  print("3- Restore Image")
   while true do
     i = tonumber(io.read())
-    if i>0 and i<6 then
+    if i>0 and i<4 then
       return true, i
     end
   end
@@ -105,20 +99,12 @@ function Menu:showCreateMultiImage()
   
 end
 
-function Menu:showIncrementImage()
-  --show multi images detected and offer to add increment
-end
-
 function Menu:showRestoreImage()
   --show multi images detected and select disk to restore to
 end
 
-function Menu:showCompactImage()
-
-end
-
 function createImage (useDisk)
-  print(io.popen("zip ".."image.raw".." "..useDisk, "w"))
+  print(io.popen("zip image.raw "..useDisk, "w"))
 end
 
 function createMultiImage(...)
@@ -127,5 +113,5 @@ function createMultiImage(...)
   for i=1, images do
     str = images[i].." "
   end
-  print(io.popen("zip ".."image.lcl".." "..str,mode))
+  print(io.popen("zip image.lcl "..str,mode))
 end
