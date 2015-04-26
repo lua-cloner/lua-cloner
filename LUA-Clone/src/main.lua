@@ -52,7 +52,7 @@ function Menu:showMain()
 
   screen.clear();
   screen.setPos(0,0)
-  print("lua-clone V0.0.1-a") --major.minor.patch-letter  major = Breaks saves/images   minor = Adds feature/stable  patch = bugfix  letter= a=alpha, b=beta, r=release, t=testing, s=stable 
+  print("lua-clone V0.0.1-a") --major.minor.patch-letter  semver  letter= a=alpha, b=beta, r=release, t=testing, s=stable 
   print("---------------")
   print()
   
@@ -114,4 +114,8 @@ function createMultiImage(...)
     str = images[i].." "
   end
   print(io.popen("zip image.lcl "..str,mode))
+end
+
+function restore(imageName, diskName)
+  print(io.popen("unzip "..imageName.." -d /dev/"..diskName ,mode))
 end
